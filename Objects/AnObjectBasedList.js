@@ -16,17 +16,20 @@
   version of nth
 */
 
+// We convert array to linked list with pointers
 function arrayToList(array) {
   var list = null;
   for (var i = array.length - 1; i >= 0; i--)
     list = {value: array[i], rest: list};
   return list;
 }
-
+// We convert list to array
 function listToArray(list) {
   var array = [];
-  for (var node = list; node; node = node.rest)
+  for (var node = list; node; node = node.rest) {
+// The for loop assigns next node and then array takes the value
     array.push(node.value);
+  }
   return array;
 }
 
@@ -49,5 +52,13 @@ console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
 console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
-console.log(nth(arrayToList([10, 20, 30]), 1));
+console.log(nth(arrayToList([10, 20, 30]), 2));
 // → 20
+
+// Use cases of linked
+// lists: http://stackoverflow.com/questions/30949981/would-you-ever-implement-a-linked-list-in-javascript
+
+/*  Benefits
+  Easier memory allocation and
+  faster input and deletion to the body of the list
+*/
